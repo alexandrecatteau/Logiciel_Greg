@@ -51,9 +51,7 @@ namespace Extension.Validateur
                 }
             }
 
-            retour = retour.First().ToString().ToUpper() + retour.Substring(1);
-
-            return retour;
+            return retour.First().ToString().ToUpper() + retour.Substring(1); ;
         }
     }
 }
