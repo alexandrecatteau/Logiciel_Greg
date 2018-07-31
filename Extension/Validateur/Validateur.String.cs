@@ -9,9 +9,9 @@ namespace Extension.Validateur
         /// <returns>Retourne la variable.</returns>
 		public static string NonNul(this string s)
         {
-            if (_validateur.EstValide)
+            if (!_validateur.EstValide)
             {
-                throw new ArgumentNullException($"Le paramètre {_validateur.NomParametre} ne peut pas être nul.");
+                throw new ArgumentNullException($"Le paramètre {_validateur.NomParametre} ne peut pas être nul.", (Exception)null);
             }
 
             return s;
@@ -25,7 +25,7 @@ namespace Extension.Validateur
         {
             if (string.IsNullOrWhiteSpace(s))
             {
-                throw new ArgumentException($"Le parammètre {_validateur.NomParametre} doit être renseigné.");
+                throw new ArgumentException($"Le paramètre {_validateur.NomParametre} doit être renseigné.", (Exception)null);
             }
 
             return s;
@@ -40,7 +40,7 @@ namespace Extension.Validateur
         {
 			if(s.Length > longueurMaximale)
             {
-                throw new ArgumentOutOfRangeException($"La longueur maximale pour {_validateur.NomParametre} est de {longueurMaximale}.");
+                throw new ArgumentOutOfRangeException($"La longueur maximale pour {_validateur.NomParametre} est de {longueurMaximale}.", (Exception)null);
             }
 
             return s;
@@ -55,7 +55,7 @@ namespace Extension.Validateur
         {
             if (s.Length < longueurMinimale)
             {
-                throw new ArgumentOutOfRangeException($"La longueur minimale pour {_validateur.NomParametre} est de {longueurMinimale}.");
+                throw new ArgumentOutOfRangeException($"La longueur minimale pour {_validateur.NomParametre} est de {longueurMinimale}.", (Exception)null);
             }
 
             return s;
