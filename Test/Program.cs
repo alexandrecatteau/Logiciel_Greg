@@ -11,16 +11,9 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            string testString = "zaeqsd";
+            int testInt = 897;
 
-            try
-            {
-                testString.Valider(nameof(testString)).NonNul().Obligatoire().LongueurMaximale(78).LongueurMinimale(78);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            testInt.Valider(nameof(testInt)).Entre(6, 10);
 
             Console.ReadKey();
         }

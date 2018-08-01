@@ -1,31 +1,48 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Extension.Validateur
 {
     public static partial class Validateur
     {
-        private static Objet.Validateur _validateur;
-
         /// <summary>
         /// Permet de valider un objet.
         /// </summary>
         /// <param name="nomParametre">Nom du paramètre.</param>
         /// <returns>Retourne la variable.</returns>
-        public static T Valider<T>(this T t, string nomParametre)
+        public static Objet.Validateur<T> Valider<T>(this T t, string nomParametre)
         {
-            _validateur = new Objet.Validateur { NomParametre = $"'{ObtenirNomParametre(nomParametre)}'" };
+            Objet.Validateur<T> validateur = new Objet.Validateur<T>
+            {
+                NomParametre = $"'{ObtenirNomParametre(nomParametre)}'",
+                Valeur = t
+            };
 
             if (t == null)
             {
-                _validateur.EstValide = false;
+                validateur.EstValide = false;
             }
             else
             {
-                _validateur.EstValide = true;
+                validateur.EstValide = true;
             }
 
-            return t;
+            return validateur;
+        }
+
+        /// <summary>
+        /// Lève une exception si l'objet est nul.
+        /// </summary>
+        /// <returns>Retourne un objet Validateur.</returns>
+        public static Objet.Validateur<T> NonNull<T>(this Objet.Validateur<T> validateur)
+        {
+            if (!validateur.EstValide)
+            {
+                throw new ArgumentNullException($"Le paramètre {validateur.NomParametre} ne peut pas être nul.", (Exception)null);
+            }
+
+            return validateur;
         }
 
         /// <summary>
