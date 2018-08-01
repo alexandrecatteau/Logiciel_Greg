@@ -11,16 +11,9 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            string testString = "zaeqsd";
-            
-            try
-            {
-                testString.Valider(nameof(testString));
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            string testString = "";
+
+            var v = testString.Valider(nameof(testString)).Obligatoire();
 
             Console.ReadKey();
         }

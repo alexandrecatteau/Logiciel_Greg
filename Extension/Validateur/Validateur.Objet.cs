@@ -1,10 +1,17 @@
-﻿namespace Extension.Validateur.Objet
+﻿using System;
+
+namespace Extension.Validateur.Objet
 {
     /// <summary>
     /// Objet qui permet de valider un paramètre.
     /// </summary>
-    internal class Validateur
+    public class Validateur<T>
     {
+        /// <summary>
+        /// Valeur de l'objet.
+        /// </summary>
+        internal T Valeur { get; set; }
+
         /// <summary>
         /// Nom du paramètre.
         /// </summary>
