@@ -12,10 +12,10 @@ namespace Test
         static void Main(string[] args)
         {
             string testString = "zaeqsd";
-
+            
             try
             {
-                testString.Valider(nameof(testString)).NonNul().Obligatoire().LongueurMaximale(78).LongueurMinimale(78);
+                testString.Valider(nameof(testString));
             }
             catch (Exception e)
             {
