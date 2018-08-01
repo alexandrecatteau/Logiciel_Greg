@@ -11,9 +11,9 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            string testString = "";
+            int testInt = 897;
 
-            var v = testString.Valider(nameof(testString)).Obligatoire();
+            testInt.Valider(nameof(testInt)).Entre(6, 10);
 
             Console.ReadKey();
         }

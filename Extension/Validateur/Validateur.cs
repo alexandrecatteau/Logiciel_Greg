@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Extension.Validateur
@@ -25,6 +26,20 @@ namespace Extension.Validateur
             else
             {
                 validateur.EstValide = true;
+            }
+
+            return validateur;
+        }
+
+        /// <summary>
+        /// Lève une exception si l'objet est nul.
+        /// </summary>
+        /// <returns>Retourne un objet Validateur.</returns>
+        public static Objet.Validateur<T> NonNull<T>(this Objet.Validateur<T> validateur)
+        {
+            if (!validateur.EstValide)
+            {
+                throw new ArgumentNullException($"Le paramètre {validateur.NomParametre} ne peut pas être nul.", (Exception)null);
             }
 
             return validateur;
