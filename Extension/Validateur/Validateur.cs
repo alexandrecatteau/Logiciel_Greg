@@ -56,17 +56,7 @@ namespace Extension.Validateur
 
             string retour = string.Empty;
 
-            foreach (var item in listeCharParametre)
-            {
-                if (char.IsUpper(item))
-                {
-                    retour += $" {item}";
-                }
-                else
-                {
-                    retour += item;
-                }
-            }
+            listeCharParametre.ForEach(x => retour += char.IsUpper(x) ? $" {x}" : x.ToString());
 
             return retour.First().ToString().ToUpper() + retour.Substring(1); ;
         }
