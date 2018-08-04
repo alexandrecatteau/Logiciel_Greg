@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9F7DC3D1-AB1D-48F5-AF43-CAAA07221694}</ProjectGuid>
+    <ProjectGuid>{0D225E2F-249A-4CF6-8C81-44087DF09972}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Extension</RootNamespace>
-    <AssemblyName>Extension</AssemblyName>
+    <RootNamespace>Moteur</RootNamespace>
+    <AssemblyName>Moteur</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,6 +39,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,23 +49,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExceptionTechnique\ExceptionTechnique.cs" />
+    <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\Erreur.cs" />
+    <Compile Include="Migrations\201808041605573_1.cs" />
+    <Compile Include="Migrations\201808041605573_1.Designer.cs">
+      <DependentUpon>201808041605573_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808041842022_2.cs" />
+    <Compile Include="Migrations\201808041842022_2.Designer.cs">
+      <DependentUpon>201808041842022_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Validateur\Validateur.cs" />
-    <Compile Include="Validateur\Validateur.Float.cs" />
-    <Compile Include="Validateur\Validateur.Int.cs" />
-    <Compile Include="Validateur\Validateur.Long.cs" />
-    <Compile Include="Validateur\Validateur.Objet.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Validateur\Validateur.String.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EnumExtension\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201808041605573_1.resx">
+      <DependentUpon>201808041605573_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808041842022_2.resx">
+      <DependentUpon>201808041842022_2.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Extension\Extension.csproj">
+      <Project>{9f7dc3d1-ab1d-48f5-af43-caaa07221694}</Project>
+      <Name>Extension</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

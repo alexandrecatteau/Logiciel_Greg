@@ -12,7 +12,7 @@ namespace Extension.Validateur
         {
             if (validateur.Valeur < 0)
             {
-                throw new ArgumentOutOfRangeException($"Le paramètre {validateur.NomParametre} ne peut pas être inférieur à '0'.", (Exception)null);
+                throw new ExceptionTechnique.ExceptionTechnique($"Le paramètre {validateur.NomParametre} ne peut pas être inférieur à '0'.");
             }
 
             return validateur;
@@ -26,7 +26,7 @@ namespace Extension.Validateur
         {
             if(validateur.Valeur < 1)
             {
-                throw new ArgumentOutOfRangeException($"Le paramètre {validateur.NomParametre} doit être supérieur ou égal à '1'.", (Exception)null);
+                throw new ExceptionTechnique.ExceptionTechnique($"Le paramètre {validateur.NomParametre} doit être supérieur ou égal à '1'.");
             }
 
             return validateur;
@@ -41,7 +41,7 @@ namespace Extension.Validateur
         {
             if(validateur.Valeur > maximum)
             {
-                throw new ArgumentOutOfRangeException($"Le paramètre {validateur.NomParametre} doit être supérieur à '{maximum}'.", (Exception)null);
+                throw new ExceptionTechnique.ExceptionTechnique($"Le paramètre {validateur.NomParametre} doit être supérieur à '{maximum}'.");
             }
 
             return validateur;
@@ -56,7 +56,7 @@ namespace Extension.Validateur
         {
             if(validateur.Valeur < minimum)
             {
-                throw new ArgumentOutOfRangeException($"Le paramètre {validateur.NomParametre} doit être inférieur à '{minimum}'.", (Exception)null);
+                throw new ExceptionTechnique.ExceptionTechnique($"Le paramètre {validateur.NomParametre} doit être inférieur à '{minimum}'.");
             }
 
             return validateur;
@@ -72,7 +72,7 @@ namespace Extension.Validateur
         {
             if(validateur.Valeur < minimum || validateur.Valeur > maximum)
             {
-                throw new ArgumentOutOfRangeException($"Le paramètre {validateur.NomParametre} doit être entre '{minimum}' et '{maximum}'.", (Exception)null);
+                throw new ExceptionTechnique.ExceptionTechnique($"Le paramètre {validateur.NomParametre} doit être entre '{minimum}' et '{maximum}'.");
             }
 
             return validateur;

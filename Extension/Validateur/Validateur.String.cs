@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace Extension.Validateur
 {
     public static partial class Validateur
@@ -11,7 +12,7 @@ namespace Extension.Validateur
         {
             if (!validateur.EstValide)
             {
-                throw new ArgumentNullException($"Le paramètre {validateur.NomParametre} ne peut pas être nul.", (Exception)null);
+                throw new ExceptionTechnique.ExceptionTechnique($"Le paramètre {validateur.NomParametre} ne peut pas être nul.");
             }
 
             return validateur;
@@ -25,7 +26,7 @@ namespace Extension.Validateur
         {
             if (string.IsNullOrWhiteSpace(validateur.Valeur))
             {
-                throw new ArgumentException($"Le paramètre {validateur.NomParametre} doit être renseigné.", (Exception)null);
+                throw new ExceptionTechnique.ExceptionTechnique($"Le paramètre {validateur.NomParametre} doit être renseigné.");
             }
 
             return validateur;
@@ -40,7 +41,7 @@ namespace Extension.Validateur
         {
             if (validateur.Valeur.Length > longueurMaximale)
             {
-                throw new ArgumentOutOfRangeException($"La longueur maximale pour {validateur.NomParametre} est de '{longueurMaximale}'.", (Exception)null);
+                throw new ExceptionTechnique.ExceptionTechnique($"La longueur maximale pour {validateur.NomParametre} est de '{longueurMaximale}'.");
             }
 
             return validateur;
@@ -55,7 +56,7 @@ namespace Extension.Validateur
         {
             if (validateur.Valeur.Length < longueurMinimale)
             {
-                throw new ArgumentOutOfRangeException($"La longueur minimale pour {validateur.NomParametre} est de '{longueurMinimale}'.", (Exception)null);
+                throw new ExceptionTechnique.ExceptionTechnique($"La longueur minimale pour {validateur.NomParametre} est de '{longueurMinimale}'.");
             }
 
             return validateur;
