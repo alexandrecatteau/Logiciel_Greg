@@ -11,11 +11,8 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            int testInt = 897;
 
-            testInt.Valider(nameof(testInt)).Entre(6, 10);
-
-            Console.ReadKey();
+             Console.ReadKey();
         }
     }
 }
