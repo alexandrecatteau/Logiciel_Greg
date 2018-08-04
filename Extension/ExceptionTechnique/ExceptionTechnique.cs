@@ -5,12 +5,24 @@ using System.Runtime.Serialization;
 
 namespace Extension.ExceptionTechnique
 {
+    /// <summary>
+    /// Exception utilisé dans le moteur.
+    /// </summary>
     public class ExceptionTechnique : Exception
     {
+        #region Propriétés
+        /// <summary>
+        /// Message d'information de l'exception.
+        /// </summary>
         public override string Message { get; }
 
+        /// <summary>
+        /// Chemin de l'exception.
+        /// </summary>
         public override string StackTrace { get; }
+        #endregion
 
+        #region Constructeur
         public ExceptionTechnique(string message)
             : base(message)
         {
@@ -30,5 +42,6 @@ namespace Extension.ExceptionTechnique
 
             erreur.Ajouter();
         }
+        #endregion
     }
 }
