@@ -15,8 +15,7 @@ namespace ConsoleApp1
             string s = null;
             try
             {
-                Erreur erreur = new Erreur();
-                erreur.Ajouter(null);
+                s.Valider(nameof(s)).NonNul();
             }catch(Exception e)
             {
                 Console.WriteLine(e.ToString());

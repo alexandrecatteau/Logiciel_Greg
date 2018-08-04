@@ -52,6 +52,8 @@
     <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>Erreur.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\Erreur.cs" />
     <Compile Include="Erreur.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -68,6 +70,11 @@
       <DependentUpon>Erreur.edmx</DependentUpon>
     </Compile>
     <Compile Include="ExceptionTechnique\ExceptionTechnique.cs" />
+    <Compile Include="Migrations\201808042017513_1.cs" />
+    <Compile Include="Migrations\201808042017513_1.Designer.cs">
+      <DependentUpon>201808042017513_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="t_erreur.cs">
       <DependentUpon>Erreur.tt</DependentUpon>
@@ -109,6 +116,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201808042017513_1.resx">
+      <DependentUpon>201808042017513_1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

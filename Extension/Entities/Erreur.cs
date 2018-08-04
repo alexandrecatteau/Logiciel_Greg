@@ -5,31 +5,34 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
-namespace Moteur.Entities
+namespace Extension.Entities
 {
     [Table("t_erreur")]
     public class Erreur
     {
         [Key]
         public int Cle { get; set; }
-        
+
         public DateTime Date { get; set; }
-        
+
         public string Message { get; set; }
 
         public string StackTrace { get; set; }
 
-
-
-
-
-        public void Ajouter(Erreur erreur)
+        public Erreur(string message, string stackTrace)
         {
-            erreur.Valider(nameof(erreur)).NonNull();
+            this.Date = DateTime.Now;
+            this.Message = message;
+            this.StackTrace = stackTrace;
+        }
 
+
+
+        public void Ajouter()
+        {
             using (var db = new Entity())
             {
-                db.Erreurs.Add(erreur);
+                db.Erreurs.Add(this);
                 db.SaveChanges();
             }
         }

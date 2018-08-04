@@ -12,7 +12,6 @@ namespace Extension.Validateur
         {
             if (!validateur.EstValide)
             {
-                var v = new ExceptionTechnique.ExceptionTechnique($"Le paramètre {validateur.NomParametre} ne peut pas être nul.");
                 throw new ExceptionTechnique.ExceptionTechnique($"Le paramètre {validateur.NomParametre} ne peut pas être nul.");
             }
 

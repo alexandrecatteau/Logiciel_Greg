@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Extension.Entities;
+using System;
 using System.Diagnostics;
 using System.Runtime.Serialization;
 
@@ -19,9 +20,15 @@ namespace Extension.ExceptionTechnique
             for (int i = 0; i < st.FrameCount; i++)
             {
                 StackFrame sf = st.GetFrame(i);
-                this.StackTrace += $"{sf.GetMethod().ToString()} ligne : {sf.GetFileLineNumber()} {Environment.NewLine}";
+                
+                this.StackTrace += 
+                    $"{sf.GetMethod().ToString()} à {sf.GetFileName()} ligne : {sf.GetFileLineNumber()} {Environment.NewLine}";
             }
             this.Message = message;
+
+            Erreur erreur = new Erreur(this.Message, this.StackTrace);
+
+            erreur.Ajouter();
         }
     }
 }
