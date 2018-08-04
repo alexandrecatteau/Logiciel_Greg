@@ -50,5 +50,8 @@
   <ItemGroup>
     <Compile Include="Validateur\Validateur.String.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EnumExtension\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
