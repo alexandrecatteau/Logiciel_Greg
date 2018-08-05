@@ -1,4 +1,4 @@
-namespace Extension.Migrations
+namespace BaseDeDonnees.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

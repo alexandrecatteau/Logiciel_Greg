@@ -10,7 +10,7 @@ namespace Extension.Entities
     /// <summary>
     /// Erreur.
     /// </summary>
-    [Table("t_erreur")]
+    [Table("T_ERR_EXT")]
     public class Erreur
     {
         #region Propriétés
@@ -18,21 +18,25 @@ namespace Extension.Entities
         /// Clé de l'erreur.
         /// </summary>
         [Key]
+        [Column("CLE")]
         public int Cle { get; set; }
 
         /// <summary>
         /// Date de l'erreur.
         /// </summary>
+        [Column("DATE")]
         public DateTime Date { get; set; }
 
         /// <summary>
         /// Message de l'erreur.
         /// </summary>
+        [Column("MESSAGE")]
         public string Message { get; set; }
 
         /// <summary>
         /// Chemin de l'erreur.
         /// </summary>
+        [Column("STACKTRACE")]
         public string StackTrace { get; set; }
         #endregion
 

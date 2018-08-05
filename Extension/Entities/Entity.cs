@@ -11,7 +11,7 @@ namespace Extension.Entities
         /// Table des erreurs.
         /// </summary>
         public DbSet<Erreur> Erreurs { get; set; }
-
+        
         public Entity()
             :base("GregTest")
         {

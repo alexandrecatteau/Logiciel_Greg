@@ -1,5 +1,4 @@
-﻿using Extension.Validateur;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,7 +9,7 @@ namespace Moteur.Entities
     /// <summary>
     /// Erreur.
     /// </summary>
-    [Table("T_ERR")]
+    [Table("t_erreur")]
     public class Erreur
     {
         #region Propriétés
@@ -18,25 +17,21 @@ namespace Moteur.Entities
         /// Clé de l'erreur.
         /// </summary>
         [Key]
-        [Column("CLE")]
         public int Cle { get; set; }
 
         /// <summary>
         /// Date de l'erreur.
         /// </summary>
-        [Column("DATE")]
         public DateTime Date { get; set; }
 
         /// <summary>
         /// Message de l'erreur.
         /// </summary>
-        [Column("MESSAGE")]
         public string Message { get; set; }
 
         /// <summary>
         /// Chemin de l'erreur.
         /// </summary>
-        [Column("STACKTRACE")]
         public string StackTrace { get; set; }
         #endregion
 
@@ -51,6 +46,32 @@ namespace Moteur.Entities
             this.Date = DateTime.Now;
             this.Message = message;
             this.StackTrace = stackTrace;
+        }
+        #endregion
+
+        #region Méthodes publiques
+        /// <summary>
+        /// Ajout dans la base de données une erreur.
+        /// </summary>
+        public void Ajouter()
+        {
+            using (var db = new Entity())
+            {
+                db.Erreurs.Add(this);
+                db.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// Récupération de toutes les erreurs.
+        /// </summary>
+        /// <returns></returns>
+        public List<Erreur> ObtenirErreurs()
+        {
+            using (var db = new Entity())
+            {
+                return db.Erreurs.ToList();
+            }
         }
         #endregion
     }

@@ -12,8 +12,6 @@ namespace Moteur.Entities
         /// </summary>
         public DbSet<Erreur> Erreurs { get; set; }
 
-        public DbSet<Connexion> Connexions { get; set; }
-
         public Entity()
             :base("GregTest")
         {

@@ -1,5 +1,7 @@
 ﻿using Extension.Validateur;
 using Moteur.Entities;
+using Moteur.Interfaces.Services;
+using Moteur.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +14,8 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            string s = null;
-            try
-            {
-                s.Valider(nameof(s)).NonNul();
-            }catch(Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
+            IConnexionServices connexionServices = new ConnexionServices();
+            connexionServices.Ajouter(new Connexion(System.Reflection.Assembly.GetExecutingAssembly().GetName().Name));
 
             Console.ReadKey();
         }

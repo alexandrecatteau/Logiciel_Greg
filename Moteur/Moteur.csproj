@@ -49,8 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Connexion.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Erreur.cs" />
+    <Compile Include="Interfaces\Services\IConnexionServices.cs" />
+    <Compile Include="Interfaces\Services\IErreurServices.cs" />
     <Compile Include="Migrations\201808041605573_1.cs" />
     <Compile Include="Migrations\201808041605573_1.Designer.cs">
       <DependentUpon>201808041605573_1.cs</DependentUpon>
@@ -59,16 +62,32 @@
     <Compile Include="Migrations\201808041842022_2.Designer.cs">
       <DependentUpon>201808041842022_2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808050900427_3.cs" />
+    <Compile Include="Migrations\201808050900427_3.Designer.cs">
+      <DependentUpon>201808050900427_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808050910172_4.cs" />
+    <Compile Include="Migrations\201808050910172_4.Designer.cs">
+      <DependentUpon>201808050910172_4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808050916491_5.cs" />
+    <Compile Include="Migrations\201808050916491_5.Designer.cs">
+      <DependentUpon>201808050916491_5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808051050009_6.cs" />
+    <Compile Include="Migrations\201808051050009_6.Designer.cs">
+      <DependentUpon>201808051050009_6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ConnexionServices.cs" />
+    <Compile Include="Services\ErreurServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
@@ -78,6 +97,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808041842022_2.resx">
       <DependentUpon>201808041842022_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808050900427_3.resx">
+      <DependentUpon>201808050900427_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808050910172_4.resx">
+      <DependentUpon>201808050910172_4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808050916491_5.resx">
+      <DependentUpon>201808050916491_5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808051050009_6.resx">
+      <DependentUpon>201808051050009_6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
