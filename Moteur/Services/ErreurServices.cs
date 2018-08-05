@@ -6,10 +6,11 @@ using Moteur.Interfaces.Services;
 namespace Moteur.Services
 {
     /// <summary>
-    /// Services externe erreurs
+    /// Services externe erreurs.
     /// </summary>
     public class ErreurServices : IErreurServices
-    { 
+    {
+        #region Méthodes publiques
         /// <summary>
         /// Ajout d'une erreur dans la BDD.
         /// </summary>
@@ -64,5 +65,6 @@ namespace Moteur.Services
                 return erreurs;
             }
         }
+        #endregion
     }
 }

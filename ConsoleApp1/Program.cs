@@ -14,9 +14,8 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            IConnexionServices connexionServices = new ConnexionServices();
-            connexionServices.Ajouter(new Connexion(System.Reflection.Assembly.GetExecutingAssembly().GetName().Name));
-
+            Parametre parametre = new Parametre();
+            var v = parametre.EstDebug;
             Console.ReadKey();
         }
     }

@@ -7,8 +7,12 @@ using System.Linq;
 
 namespace Moteur.Services
 {
+    /// <summary>
+    /// Services pour gérer les connexions.
+    /// </summary>
     public class ConnexionServices : IConnexionServices
     {
+        #region Méthode publiques
         /// <summary>
         /// Ajout d'un connexion dans la BDD.
         /// </summary>
@@ -62,5 +66,6 @@ namespace Moteur.Services
                 return db.Connexions.ToList();
             }
         }
+        #endregion
     }
 }
