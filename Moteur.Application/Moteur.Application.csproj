@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2E5AA815-1A2C-468E-ABBF-971643C07E3E}</ProjectGuid>
+    <ProjectGuid>{7168CB5B-F8BF-491E-B6D0-B425A8B9B8B5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Moteur.Application</RootNamespace>
@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,10 +42,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ErreurServices.cs" />
+    <Compile Include="ServicesExterne\WSMoteur.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <ProjectReference Include="..\Extension\Extension.csproj">
+      <Project>{9f7dc3d1-ab1d-48f5-af43-caaa07221694}</Project>
+      <Name>Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Moteur.Application.Interface\Moteur.Application.Interface.csproj">
+      <Project>{58d84eef-4a92-4334-8697-e242b1f35fc1}</Project>
+      <Name>Moteur.Application.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Moteur.CommonType\Moteur.CommonType.csproj">
+      <Project>{78F96F47-65D6-4BD8-AF71-F6B3CAD53AD3}</Project>
+      <Name>Moteur.CommonType</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Moteur.Domain\Moteur.Domain.csproj">
+      <Project>{f90ece30-2f88-43ae-b558-e46c9a30e0dd}</Project>
+      <Name>Moteur.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

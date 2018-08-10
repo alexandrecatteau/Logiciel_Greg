@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
-namespace Moteur.Entities
+namespace Moteur.Domain.Entities
 {
     /// <summary>
     /// Table de paramétrage.

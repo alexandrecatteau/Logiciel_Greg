@@ -1,12 +1,6 @@
-﻿using Extension.Validateur;
-using Moteur.Entities;
-using Moteur.Interfaces.Services;
-using Moteur.Services;
+﻿using Moteur.Application.Interface.ServicesExterne;
+using Moteur.Application.ServicesExterne;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
@@ -14,8 +8,24 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Parametre parametre = new Parametre();
-            var v = parametre.EstDebug;
+            DateTime now = DateTime.Now;
+            IWSMoteur moteur = new WSMoteur();
+
+            moteur.EnregistrerConnexion(new Moteur.CommonType.Mapper.ConnexionPourDetail
+            {
+                NomProjet = AppDomain.CurrentDomain.FriendlyName
+            });
+
+
+
+            var v = moteur.ObtenirListeConnexions();
+
+            foreach (var item in v)
+            {
+                Console.WriteLine($"{item.Cle} : le {item.Date} sur {item.NomProjet} avec le nom {item.NomUtilisateur}.");
+            }
+
+
             Console.ReadKey();
         }
     }
