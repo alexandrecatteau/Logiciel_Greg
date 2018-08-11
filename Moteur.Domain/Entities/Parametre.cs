@@ -42,7 +42,7 @@ namespace Moteur.Domain.Entities
             {
                 using (var db = new Entity())
                 {
-                    return Convert.ToBoolean(int.Parse(db.Parametre.SingleOrDefault(x => x.Nom == "EstDebug").Valeur));
+                    return Convert.ToBoolean(int.Parse(db.Parametres.SingleOrDefault(x => x.Nom == "EstDebug").Valeur));
                 }
             }
         }

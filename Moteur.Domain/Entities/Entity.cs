@@ -20,7 +20,17 @@ namespace Moteur.Domain.Entities
         /// <summary>
         /// Table de paramétrage.
         /// </summary>
-        public DbSet<Parametre> Parametre { get; set; }
+        public DbSet<Parametre> Parametres { get; set; }
+
+        /// <summary>
+        /// Table des utilisateurs.
+        /// </summary>
+        public DbSet<Utilisateur.Utilisateur> Utlisateurs { get; set; }
+
+        /// <summary>
+        /// Table des droits.
+        /// </summary>
+        //public DbSet<Droit> Droits { get; set; }
 
         public Entity()
             :base("GregTest")

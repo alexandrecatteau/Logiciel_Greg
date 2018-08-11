@@ -2,11 +2,17 @@
 using Moteur.Application.Interface.ServicesExterne;
 using Moteur.CommonType.Mapper;
 using Moteur.Domain.Entities;
+using Moteur.Domain.Entities.Utilisateur;
+using Moteur.Domain.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Moteur.Application.ServicesExterne
 {
+    /// <summary>
+    /// Web Service pour le moteur.
+    /// </summary>
     public class WSMoteur : IWSMoteur
     {
         /// <summary>
@@ -31,6 +37,32 @@ namespace Moteur.Application.ServicesExterne
 
             Connexion connexion = ConnexionPourDetail.Convertir(connexionPourDetail);
             connexion.Ajouter();
+        }
+
+        /// <summary>
+        /// Enregistrement d'un nouvel utilisateur.
+        /// </summary>
+        public void EnregistrerNouvelUtilisateur()
+        {
+            Utilisateur utilisateur = new Utilisateur();
+
+            // Si la table est vide le 1er user est admin.
+            if (utilisateur.EstTableVide())
+            {
+                utilisateur.EnregistrerUtilisateur(new Utilisateur
+                {
+                    Nom = Environment.UserName,
+                    Etat = (int)EtatUtlisateur.Admin
+                });
+            }
+            else
+            {
+                utilisateur.EnregistrerUtilisateur(new Utilisateur
+                {
+                    Nom = Environment.UserName,
+                    Etat = (int)EtatUtlisateur.NA
+                });
+            }
         }
     }
 }
