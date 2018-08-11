@@ -8,9 +8,6 @@ namespace Moteur.Domain.Entities.Utilisateur
 {
     public class UtilisateurNA : UtilisateurAbstract
     {
-        public override string Test()
-        {
-            return "youpi";
-        }
+
     }
 }

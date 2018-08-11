@@ -8,13 +8,9 @@ using System.Threading.Tasks;
 
 namespace Moteur.Domain.Entities.Utilisateur
 {
-    public abstract class UtilisateurAbstract : IUtilisateur
+    public abstract class UtilisateurAbstract
     {
         public EtatUtlisateur Etat { get; private set; }
 
-        public virtual string Test()
-        {
-            throw new Exception("test");
-        }
     }
 }

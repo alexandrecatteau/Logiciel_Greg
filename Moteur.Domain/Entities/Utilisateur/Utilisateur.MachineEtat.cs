@@ -3,14 +3,35 @@ using Moteur.Domain.Interfaces.Entities.Utlisateur;
 
 namespace Moteur.Domain.Entities.Utilisateur
 {
-    public class UtilisateurMachineEtat : IUtilisateur
+    public class UtilisateurMachineEtat
     {
+        #region Attributs
+        /// <summary>
+        /// Classe abstraite de l'utilisateur.
+        /// </summary>
         private readonly UtilisateurAbstract Utilisateur;
-        public EtatUtlisateur EtatUtlisateur { get; set; }
-        public string ValeurEtat { get; set; }
 
+        /// <summary>
+        /// Etat de l'utilisateur.
+        /// </summary>
+        public EtatUtlisateur EtatUtlisateur { get; set; }
+
+        /// <summary>
+        /// Valeur en string de l'état.
+        /// </summary>
+        public string ValeurEtat { get; set; }
+        #endregion
+
+        #region Constructeurs
+        /// <summary>
+        /// Constructeur par défaut.
+        /// </summary>
         protected UtilisateurMachineEtat() { }
 
+        /// <summary>
+        /// Constructeur pour gérer selon l'état.
+        /// </summary>
+        /// <param name="etat"></param>
         public UtilisateurMachineEtat(EtatUtlisateur etat = EtatUtlisateur.NA)
         {
             this.EtatUtlisateur = etat;
@@ -31,10 +52,6 @@ namespace Moteur.Domain.Entities.Utilisateur
                     break;
             }
         }
-
-        public string Test()
-        {
-            return this.Utilisateur.Test();
-        }
+        #endregion
     }
 }

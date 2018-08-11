@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Moteur.Domain.Entities.Utilisateur
 {
-    public class UtilisateurAdmin : UtilisateurAbstract, IUtilisateur
+    public class UtilisateurAdmin : UtilisateurAbstract
     {
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Extension.Validateur;
+using Moteur.Domain.Interfaces.Entities.Utlisateur;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
@@ -10,7 +12,7 @@ namespace Moteur.Domain.Entities.Utilisateur
     /// Table des utilisateurs.
     /// </summary>
     [Table("T_UTL")]
-    public class Utilisateur : DbContext
+    public class Utilisateur : DbContext, IUtilisateur
     {
         #region Attributs
         /// <summary>
@@ -99,6 +101,10 @@ namespace Moteur.Domain.Entities.Utilisateur
         /// <param name="utilisateur">Utilisateur à enregistrer.</param>
         public void EnregistrerUtilisateur(Utilisateur utilisateur)
         {
+            utilisateur.Valider(nameof(utilisateur));
+            utilisateur.Etat.Valider(nameof(utilisateur.Etat)).Positif();
+            utilisateur.Nom.Valider(nameof(utilisateur.Nom)).Obligatoire();
+
             using (var db = new Entity())
             {
                 db.Utlisateurs.Add(utilisateur);

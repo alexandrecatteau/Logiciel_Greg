@@ -2,7 +2,7 @@
 
 namespace Moteur.Domain.Entities.Utilisateur
 {
-    public class UtilisateurNormal : UtilisateurAbstract, IUtilisateur
+    public class UtilisateurNormal : UtilisateurAbstract
     {
     }
 }
