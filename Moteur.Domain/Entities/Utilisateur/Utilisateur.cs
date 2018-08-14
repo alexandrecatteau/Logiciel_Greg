@@ -39,11 +39,11 @@ namespace Moteur.Domain.Entities.Utilisateur
         /// <summary>
         /// Etat de l'utilisateur.
         /// </summary>
-        public UtilisateurMachineEtat UtilisateurEtat
+        public UtilisateurMachineEtat UtilisateurMachineEtat
         {
             get
             {
-                return new UtilisateurMachineEtat((Enum.EtatUtlisateur)this.Etat);
+                return new UtilisateurMachineEtat(this);
             }
         }
 
@@ -54,7 +54,7 @@ namespace Moteur.Domain.Entities.Utilisateur
         {
             get
             {
-                return this.UtilisateurEtat.EtatUtlisateur == Enum.EtatUtlisateur.Admin;
+                return (Enum.EtatUtlisateur)this.Etat == Enum.EtatUtlisateur.Admin;
             }
         }
         #endregion
@@ -96,19 +96,64 @@ namespace Moteur.Domain.Entities.Utilisateur
         }
 
         /// <summary>
-        /// Enregistrement d'un nouvelle utilisateur.
+        /// Récupération de tout les utilisateurs.
         /// </summary>
-        /// <param name="utilisateur">Utilisateur à enregistrer.</param>
-        public void EnregistrerUtilisateur(Utilisateur utilisateur)
+        /// <returns>Liste de tout les utilisateurs.</returns>
+        public List<Utilisateur> ObtenirListeUtilisateur()
         {
-            utilisateur.Valider(nameof(utilisateur));
-            utilisateur.Etat.Valider(nameof(utilisateur.Etat)).Positif();
-            utilisateur.Nom.Valider(nameof(utilisateur.Nom)).Obligatoire();
+            using (var db = new Entity())
+            {
+                return db.Utlisateurs.ToList();
+            }
+        }
 
+        /// <summary>
+        /// Ajout dun nouvel utilisateur dans la BDD.
+        /// </summary>
+        /// <param name="utlisateur">Utlisateur à ajouter.</param>
+        public void Ajouter(Utilisateur utilisateur)
+        {
+            utilisateur.Valider(nameof(utilisateur)).NonNull();
             using (var db = new Entity())
             {
                 db.Utlisateurs.Add(utilisateur);
                 db.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// Supprime un utilisateur par sa clé.
+        /// </summary>
+        /// <param name="cle">Clé à supprimer.</param>
+        public void Supprimer(int cle)
+        {
+            cle.Valider(nameof(cle)).StrictementPositif();
+            using (var db = new Entity())
+            {
+                Utilisateur utilisateurSuppression = db.Utlisateurs.Single(x => x.Cle == cle);
+                utilisateurSuppression.Valider(nameof(utilisateurSuppression)).NonNull();
+
+                db.Utlisateurs.Remove(utilisateurSuppression);
+                db.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// Modifie un utilisateur par sa clé.
+        /// </summary>
+        ///<param name="utilisateur">Utilisateur qui a été modifié.</param>
+        public void Modifier(Utilisateur utilisateur)
+        {
+            utilisateur.Valider(nameof(utilisateur)).NonNull();
+            utilisateur.Cle.Valider(nameof(utilisateur.Cle)).StrictementPositif();
+
+            using (var db = new Entity())
+            {
+                Utilisateur utilisateurModifier = db.Utlisateurs.Single(x => x.Cle == utilisateur.Cle);
+                utilisateurModifier.Valider(nameof(utilisateurModifier)).NonNull();
+
+                db.Entry<Utilisateur>(utilisateurModifier).State = EntityState.Modified;
+                db.Entry<Utilisateur>(utilisateurModifier).CurrentValues.SetValues(utilisateur);
             }
         }
         #endregion

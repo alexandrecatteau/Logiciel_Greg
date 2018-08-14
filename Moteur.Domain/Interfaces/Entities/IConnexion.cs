@@ -12,8 +12,7 @@ namespace Moteur.Domain.Interfaces.Entities
         /// <summary>
         /// Ajout d'un connexion dans la BDD.
         /// </summary>
-        /// <param name="connexion">Connexion.</param>
-        void Ajouter(Connexion connexion);
+        void Ajouter();
 
         /// <summary>
         /// Récupération d'une connexion avec un morceau du non utilisateur.

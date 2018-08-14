@@ -1,13 +1,12 @@
-﻿using Moteur.Domain.Interfaces.Entities.Utlisateur;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Moteur.Domain.Enum;
 
 namespace Moteur.Domain.Entities.Utilisateur
 {
-    public class UtilisateurAdmin : UtilisateurAbstract
+    public class UtilisateurAdmin : UtilisateurAbstract<UtilisateurMachineEtat>
     {
+        public UtilisateurAdmin(Utilisateur utilisateur)
+        {
+            this.Etat = EtatUtlisateur.Admin;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Extension.Validateur;
+using Moteur.Domain.Interfaces.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,7 +13,7 @@ namespace Moteur.Domain.Entities
     /// table des connexions.
     /// </summary>
     [Table("T_CNX")]
-    public class Connexion : DbContext
+    public class Connexion : DbContext, IConnexion
     {
         #region Propriétés
         /// <summary>
@@ -45,8 +46,12 @@ namespace Moteur.Domain.Entities
         /// <summary>
         /// Constructeur par défaut.
         /// </summary>
-        public Connexion()
+        /// <param name="nomProjet">Nom du projet sur lequel on est.</param>
+        public Connexion(string nomProjet)
         {
+            nomProjet.Valider(nameof(nomProjet)).Obligatoire();
+
+            this.NomProjet = nomProjet;
             this.Date = DateTime.Now;
             this.NomUtilisateur = Environment.MachineName;
         }

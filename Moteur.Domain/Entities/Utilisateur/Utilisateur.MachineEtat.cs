@@ -1,57 +1,56 @@
 ﻿using Moteur.Domain.Enum;
 using Moteur.Domain.Interfaces.Entities.Utlisateur;
+using System;
 
 namespace Moteur.Domain.Entities.Utilisateur
 {
-    public class UtilisateurMachineEtat
+    public class UtilisateurMachineEtat : IUtilisateurMachineEtat
     {
         #region Attributs
-        /// <summary>
-        /// Classe abstraite de l'utilisateur.
-        /// </summary>
-        private readonly UtilisateurAbstract Utilisateur;
-
-        /// <summary>
-        /// Etat de l'utilisateur.
-        /// </summary>
         public EtatUtlisateur EtatUtlisateur { get; set; }
+        public string ValeurEtat { get { return this.EtatUtlisateur.ToString(); } }
 
-        /// <summary>
-        /// Valeur en string de l'état.
-        /// </summary>
-        public string ValeurEtat { get; set; }
+        private UtilisateurAbstract<UtilisateurMachineEtat> _utilisateurAbstract;
+        private Utilisateur _utilisateur;
         #endregion
 
-        #region Constructeurs
-        /// <summary>
-        /// Constructeur par défaut.
-        /// </summary>
-        protected UtilisateurMachineEtat() { }
-
-        /// <summary>
-        /// Constructeur pour gérer selon l'état.
-        /// </summary>
-        /// <param name="etat"></param>
-        public UtilisateurMachineEtat(EtatUtlisateur etat = EtatUtlisateur.NA)
+        [Obsolete("Ne pas utiliser. Utliser le contructeur avec l'utilisateur en paramètre.")]
+        public UtilisateurMachineEtat()
         {
-            this.EtatUtlisateur = etat;
-            this.ValeurEtat = this.EtatUtlisateur.ToString();
 
-            switch (this.EtatUtlisateur)
+        }
+
+        public UtilisateurMachineEtat(Utilisateur utilisateur)
+        {
+            switch ((EtatUtlisateur)utilisateur.Etat)
             {
                 case EtatUtlisateur.NA:
-                    this.Utilisateur = new UtilisateurNA();
+                    _utilisateurAbstract = new UtilisateurNA(utilisateur);
                     break;
                 case EtatUtlisateur.Normal:
-                    this.Utilisateur = new UtilisateurNormal();
+                    _utilisateurAbstract = new UtilisateurNormal(utilisateur);
                     break;
                 case EtatUtlisateur.Admin:
-                    this.Utilisateur = new UtilisateurAdmin();
-                    break;
-                default:
+                    _utilisateurAbstract = new UtilisateurAdmin(utilisateur);
                     break;
             }
+            this._utilisateur = utilisateur;
+            this.EtatUtlisateur = _utilisateurAbstract.Etat;
         }
-        #endregion
+
+        public void ChangerEtatVersAdmin()
+        {
+            _utilisateurAbstract.ChangerEtatVersAdmin(this._utilisateur);
+        }
+
+        public void ChangerEtatVersNA()
+        {
+            _utilisateurAbstract.ChangerEtatVersNA(this._utilisateur);
+        }
+
+        public void ChangerEtatVersNormal()
+        {
+            _utilisateurAbstract.ChangerEtatVersNormal(this._utilisateur);
+        }
     }
 }

@@ -61,6 +61,8 @@
     <Compile Include="Interfaces\Entities\IConnexion.cs" />
     <Compile Include="Interfaces\Entities\IErreur.cs" />
     <Compile Include="Interfaces\Entities\Utlisateur\IUtilisateur.cs" />
+    <Compile Include="Interfaces\Entities\Utlisateur\IUtilisateurAbstractEtat.cs" />
+    <Compile Include="Interfaces\Entities\Utlisateur\IUtilisateurMachineEtat.cs" />
     <Compile Include="Migrations\201808111059123_1.cs" />
     <Compile Include="Migrations\201808111059123_1.Designer.cs">
       <DependentUpon>201808111059123_1.cs</DependentUpon>
@@ -108,6 +110,14 @@
     <Compile Include="Migrations\201808111655526_15.cs" />
     <Compile Include="Migrations\201808111655526_15.Designer.cs">
       <DependentUpon>201808111655526_15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808141536268_16.cs" />
+    <Compile Include="Migrations\201808141536268_16.Designer.cs">
+      <DependentUpon>201808141536268_16.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808142124511_17.cs" />
+    <Compile Include="Migrations\201808142124511_17.Designer.cs">
+      <DependentUpon>201808142124511_17.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -159,6 +169,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808111655526_15.resx">
       <DependentUpon>201808111655526_15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808141536268_16.resx">
+      <DependentUpon>201808141536268_16.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808142124511_17.resx">
+      <DependentUpon>201808142124511_17.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
