@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validateur\Validateur.cs" />
+    <Compile Include="Validateur\Validateur.Decimal.cs" />
     <Compile Include="Validateur\Validateur.Float.cs" />
     <Compile Include="Validateur\Validateur.Int.cs" />
     <Compile Include="Validateur\Validateur.Long.cs" />
