@@ -57,13 +57,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Extension\Extension.csproj">
-      <Project>{9f7dc3d1-ab1d-48f5-af43-caaa07221694}</Project>
-      <Name>Extension</Name>
+    <ProjectReference Include="..\Moteur.Application.Interface\Moteur.Application.Interface.csproj">
+      <Project>{58d84eef-4a92-4334-8697-e242b1f35fc1}</Project>
+      <Name>Moteur.Application.Interface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Moteur\Moteur.csproj">
-      <Project>{0d225e2f-249a-4cf6-8c81-44087df09972}</Project>
-      <Name>Moteur</Name>
+    <ProjectReference Include="..\Moteur.Application\Moteur.Application.csproj">
+      <Project>{7168cb5b-f8bf-491e-b6d0-b425a8b9b8b5}</Project>
+      <Name>Moteur.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Moteur.CommonType\Moteur.CommonType.csproj">
+      <Project>{78F96F47-65D6-4BD8-AF71-F6B3CAD53AD3}</Project>
+      <Name>Moteur.CommonType</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

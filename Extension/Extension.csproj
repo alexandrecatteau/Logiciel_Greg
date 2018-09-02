@@ -49,36 +49,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="C__MigrationHistory.cs">
-      <DependentUpon>Erreur.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Erreur.cs" />
-    <Compile Include="Erreur.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Erreur.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Erreur.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Erreur.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Erreur.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Erreur.edmx</DependentUpon>
-    </Compile>
     <Compile Include="ExceptionTechnique\ExceptionTechnique.cs" />
-    <Compile Include="Migrations\201808042017513_1.cs" />
-    <Compile Include="Migrations\201808042017513_1.Designer.cs">
-      <DependentUpon>201808042017513_1.cs</DependentUpon>
+    <Compile Include="Migrations\201808111019083_8.cs" />
+    <Compile Include="Migrations\201808111019083_8.Designer.cs">
+      <DependentUpon>201808111019083_8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808111021081_9.cs" />
+    <Compile Include="Migrations\201808111021081_9.Designer.cs">
+      <DependentUpon>201808111021081_9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808111022493_10.cs" />
+    <Compile Include="Migrations\201808111022493_10.Designer.cs">
+      <DependentUpon>201808111022493_10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808111031155_11.cs" />
+    <Compile Include="Migrations\201808111031155_11.Designer.cs">
+      <DependentUpon>201808111031155_11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808162121472_1.cs" />
+    <Compile Include="Migrations\201808162121472_1.Designer.cs">
+      <DependentUpon>201808162121472_1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="t_erreur.cs">
-      <DependentUpon>Erreur.tt</DependentUpon>
-    </Compile>
     <Compile Include="Validateur\Validateur.cs" />
     <Compile Include="Validateur\Validateur.Float.cs" />
     <Compile Include="Validateur\Validateur.Int.cs" />
@@ -93,33 +88,26 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Erreur.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Erreur.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Erreur.edmx.diagram">
-      <DependentUpon>Erreur.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Erreur.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Erreur.Context.cs</LastGenOutput>
-      <DependentUpon>Erreur.edmx</DependentUpon>
-    </Content>
-    <Content Include="Erreur.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Erreur.edmx</DependentUpon>
-      <LastGenOutput>Erreur.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808042017513_1.resx">
-      <DependentUpon>201808042017513_1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808111019083_8.resx">
+      <DependentUpon>201808111019083_8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808111021081_9.resx">
+      <DependentUpon>201808111021081_9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808111022493_10.resx">
+      <DependentUpon>201808111022493_10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808111031155_11.resx">
+      <DependentUpon>201808111031155_11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808162121472_1.resx">
+      <DependentUpon>201808162121472_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

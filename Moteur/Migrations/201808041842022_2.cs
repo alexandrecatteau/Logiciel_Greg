@@ -1,4 +1,4 @@
-namespace Moteur.Migrations
+namespace Moteur.Domain.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
