@@ -1,5 +1,5 @@
 ﻿using Moteur.Domain.Enum;
-using Moteur.Domain.Interfaces.Entities.Utlisateur;
+using Moteur.Domain.Interfaces.Entities.Utilisateur;
 using System;
 
 namespace Moteur.Domain.Entities.Utilisateur
@@ -7,8 +7,8 @@ namespace Moteur.Domain.Entities.Utilisateur
     public class UtilisateurMachineEtat : IUtilisateurMachineEtat
     {
         #region Attributs
-        public EtatUtlisateur EtatUtlisateur { get; set; }
-        public string ValeurEtat { get { return this.EtatUtlisateur.ToString(); } }
+        public EtatUtilisateur EtatUtilisateur { get; set; }
+        public string ValeurEtat { get { return this.EtatUtilisateur.ToString(); } }
 
         private UtilisateurAbstract<UtilisateurMachineEtat> _utilisateurAbstract;
         private Utilisateur _utilisateur;
@@ -22,20 +22,20 @@ namespace Moteur.Domain.Entities.Utilisateur
 
         public UtilisateurMachineEtat(Utilisateur utilisateur)
         {
-            switch ((EtatUtlisateur)utilisateur.Etat)
+            switch ((EtatUtilisateur)utilisateur.Etat)
             {
-                case EtatUtlisateur.NA:
+                case EtatUtilisateur.NA:
                     _utilisateurAbstract = new UtilisateurNA(utilisateur);
                     break;
-                case EtatUtlisateur.Normal:
+                case EtatUtilisateur.Normal:
                     _utilisateurAbstract = new UtilisateurNormal(utilisateur);
                     break;
-                case EtatUtlisateur.Admin:
+                case EtatUtilisateur.Admin:
                     _utilisateurAbstract = new UtilisateurAdmin(utilisateur);
                     break;
             }
             this._utilisateur = utilisateur;
-            this.EtatUtlisateur = _utilisateurAbstract.Etat;
+            this.EtatUtilisateur = _utilisateurAbstract.Etat;
         }
 
         public void ChangerEtatVersAdmin()

@@ -25,17 +25,19 @@ namespace Moteur.Domain.Entities
         /// <summary>
         /// Table des utilisateurs.
         /// </summary>
-        public DbSet<Utilisateur.Utilisateur> Utlisateurs { get; set; }
-
-        /// <summary>
-        /// Table des droits.
-        /// </summary>
-        //public DbSet<Droit> Droits { get; set; }
+        public DbSet<Utilisateur.Utilisateur> Utilisateurs { get; set; }
 
         public Entity()
-            :base("GregTest")
+            :base("Greg")
         {
 
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Utilisateur.Utilisateur>().HasIndex(e => e.Nom).IsUnique();
+            modelBuilder.Entity<Connexion>().HasRequired<Utilisateur.Utilisateur>(x => x.Utilisateur).WithMany(x => x.Connexions).HasForeignKey<int>(x => x.CleUtilisateur);
+            //modelBuilder.Entity<Connexion>().HasRequired(x=>x.)
         }
     }
 }

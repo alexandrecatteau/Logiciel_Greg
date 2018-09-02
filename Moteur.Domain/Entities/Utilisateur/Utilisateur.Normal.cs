@@ -1,5 +1,5 @@
 ﻿using Moteur.Domain.Enum;
-using Moteur.Domain.Interfaces.Entities.Utlisateur;
+using Moteur.Domain.Interfaces.Entities.Utilisateur;
 
 namespace Moteur.Domain.Entities.Utilisateur
 {
@@ -7,17 +7,17 @@ namespace Moteur.Domain.Entities.Utilisateur
     {
         public UtilisateurNormal(Utilisateur utilisateur)
         {
-            this.Etat = EtatUtlisateur.Normal;
+            this.Etat = EtatUtilisateur.Normal;
         }
 
         public override void ChangerEtatVersAdmin(Utilisateur utilisateur)
         {
-            utilisateur.Etat = (int)EtatUtlisateur.Admin;
+            utilisateur.Etat = (int)EtatUtilisateur.Admin;
         }
 
         public override void ChangerEtatVersNA(Utilisateur utilisateur)
         {
-            utilisateur.Etat = (int)EtatUtlisateur.NA;
+            utilisateur.Etat = (int)EtatUtilisateur.NA;
         }
     }
 }

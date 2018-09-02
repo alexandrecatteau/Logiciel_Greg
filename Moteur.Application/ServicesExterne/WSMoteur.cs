@@ -3,8 +3,8 @@ using Moteur.Application.Interface.ServicesExterne;
 using Moteur.Domain.Entities;
 using Moteur.Domain.Entities.Utilisateur;
 using Moteur.Domain.Enum;
-using Moteur.Domain.Interfaces.Entities;
-using Moteur.Domain.Interfaces.Entities.Utlisateur;
+using Moteur.Domain.Interfaces.Repositories;
+using Moteur.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,23 +19,20 @@ namespace Moteur.Application.ServicesExterne
         /// <summary>
         /// Utilisateur.
         /// </summary>
-        private IUtilisateur _utilisateur;
+        private IUtilisateurRepository _utilisateur;
 
         /// <summary>
         /// Connexion.
         /// </summary>
-        private IConnexion _connexion;
+        private IConnexionRepository _connexion;
 
         /// <summary>
         /// Constructeur.
         /// </summary>
-        /// <param name="nomProjet">Nom du projet.</param>
-        public WSMoteur(string nomProjet)
+        public WSMoteur()
         {
-            nomProjet.Valider(nameof(nomProjet)).Obligatoire();
-
-            _utilisateur = new Utilisateur();
-            _connexion = new Connexion(nomProjet);
+            _utilisateur = new UtilisateurRepository();
+            _connexion = new ConnexionRepository();
         }
 
         /// <summary>
@@ -45,32 +42,16 @@ namespace Moteur.Application.ServicesExterne
         public List<Connexion> ObtenirListeConnexions()
         {
             List<Connexion> connections = _connexion.ObtenirListeConnexion();
+            connections.ForEach(x => x.Utilisateur = _utilisateur.ObtenirUtilisateurParCle(x.CleUtilisateur));
 
             return connections.ToList();
         }
 
         /// <summary>
-        /// Enregistre une connexion.
-        /// </summary>
-        /// <param name="connexion">Connexion à enregistrer.</param>
-        public void AjouterConnexion(Connexion connexion)
-        {
-            connexion.Valider(nameof(connexion)).NonNull();
-
-            //On vérifie si il y a déjà un utilisateur avec le nom.
-            if (!this.ObtenirListeUtilisateurs().Any(x=>x.Nom == connexion.NomUtilisateur))
-            {
-                this.AjouterNouvelUtilisateur(new Utilisateur {Nom = connexion.NomUtilisateur });
-            }
-
-            connexion.Ajouter();
-        }
-        
-        /// <summary>
         /// Enregistrement d'un nouvel utilisateur.
         /// </summary>
-        /// <param name="utilisateur">Utlisateur à ajouter.</param>
-        public void AjouterNouvelUtilisateur(Utilisateur utilisateur)
+        /// <param name="utilisateur">Utilisateur à ajouter.</param>
+        public void AjouterUtilisateur(Utilisateur utilisateur)
         {
             utilisateur.Valider(nameof(utilisateur)).NonNull();
             _utilisateur.Ajouter(utilisateur);
@@ -79,25 +60,30 @@ namespace Moteur.Application.ServicesExterne
         /// <summary>
         /// Enregistrement d'un nouvel utilisateur.
         /// </summary>
-        public void AjouterNouvelUtilisateur()
+        public Utilisateur AjouterNouvelUtilisateur()
         {
+            Utilisateur nouvelUtilisateur;
+
             // Si la table est vide le 1er user est admin.
             if (_utilisateur.EstTableVide())
             {
-                _utilisateur.Ajouter(new Utilisateur
+                nouvelUtilisateur = new Utilisateur
                 {
                     Nom = Environment.MachineName,
-                    Etat = (int)EtatUtlisateur.Admin
-                });
+                    Etat = (int)EtatUtilisateur.Admin
+                };
             }
             else
             {
-                _utilisateur.Ajouter(new Utilisateur
+                nouvelUtilisateur = new Utilisateur
                 {
                     Nom = Environment.MachineName,
-                    Etat = (int)EtatUtlisateur.NA
-                });
+                    Etat = (int)EtatUtilisateur.NA
+                };
             }
+
+            _utilisateur.Ajouter(nouvelUtilisateur);
+            return nouvelUtilisateur;
         }
 
         /// <summary>
@@ -106,7 +92,42 @@ namespace Moteur.Application.ServicesExterne
         /// <returns>Liste de tout le utilisateurs.</returns>
         public List<Utilisateur> ObtenirListeUtilisateurs()
         {
-            return _utilisateur.ObtenirListeUtilisateur();
+            List<Utilisateur> utilisateurs = _utilisateur.ObtenirListeUtilisateur();
+
+            utilisateurs.ForEach(x => x.Connexions = _connexion.ObtenirListeConnexionDepuisCleUtilisateur(x.Cle));
+
+            return utilisateurs;
+        }
+
+        /// <summary>
+        /// Obtien un utilisateur à partir du nom.
+        /// </summary>
+        /// <param name="nomUtilisateur">Nom de l'utilisateur.</param>
+        /// <returns>Objet utilisateur.</returns>
+        public Utilisateur ObtenirUtilisateur(string nomUtilisateur)
+        {
+            nomUtilisateur.Valider(nameof(nomUtilisateur)).Obligatoire();
+
+            Utilisateur utilisateur = _utilisateur.ObtenirUtilisateur(nomUtilisateur);
+
+            utilisateur.Connexions = _connexion.ObtenirListeConnexionDepuisCleUtilisateur(utilisateur.Cle);
+
+            return utilisateur;
+        }
+
+
+        /// <summary>
+        /// Ajoute une nouvelle connexion à un utilisateur.
+        /// </summary>
+        /// <param name="utilisateur">Utilisateur ou ajouter la connexion.</param>
+        /// <param name="nomProjet">Nomp du projet</param>
+        public void AjouterConnexion(Utilisateur utilisateur, string nomProjet)
+        {
+            utilisateur.Valider(nameof(utilisateur)).NonNull();
+            utilisateur.Cle.Valider(nameof(utilisateur.Cle)).StrictementPositif();
+            nomProjet.Valider(nameof(nomProjet)).Obligatoire();
+
+            _utilisateur.AjouterConnexion(utilisateur.Cle, new Connexion(nomProjet));
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Extension.ExceptionTechnique;
 using Moteur.Domain.Enum;
-using Moteur.Domain.Interfaces.Entities.Utlisateur;
+using Moteur.Domain.Interfaces.Entities.Utilisateur;
 
 namespace Moteur.Domain.Entities.Utilisateur
 {
@@ -8,12 +8,12 @@ namespace Moteur.Domain.Entities.Utilisateur
     {
         public UtilisateurNA(Utilisateur utilisateur)
         {
-            this.Etat = EtatUtlisateur.NA;
+            this.Etat = EtatUtilisateur.NA;
         }
 
         public override void ChangerEtatVersNormal(Utilisateur utilisateur)
         {
-            utilisateur.Etat = (int)EtatUtlisateur.Normal;
+            utilisateur.Etat = (int)EtatUtilisateur.Normal;
         }
     }
 }

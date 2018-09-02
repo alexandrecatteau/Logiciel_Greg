@@ -10,7 +10,7 @@ namespace Extension.Entities
     /// <summary>
     /// Erreur.
     /// </summary>
-    [Table("T_ERR_EXT")]
+    [Table("T_ERR")]
     public class Erreur
     {
         #region Propriétés

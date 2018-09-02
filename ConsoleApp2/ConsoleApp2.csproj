@@ -57,6 +57,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Extension\Extension.csproj">
+      <Project>{9F7DC3D1-AB1D-48F5-AF43-CAAA07221694}</Project>
+      <Name>Extension</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Moteur.Application.Interface\Moteur.Application.Interface.csproj">
       <Project>{58D84EEF-4A92-4334-8697-E242B1F35FC1}</Project>
       <Name>Moteur.Application.Interface</Name>

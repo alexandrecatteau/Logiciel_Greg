@@ -1,4 +1,4 @@
-﻿namespace Moteur.Domain.Interfaces.Entities.Utlisateur
+﻿namespace Moteur.Domain.Interfaces.Entities.Utilisateur
 {
     public interface IUtilisateurMachineEtat
     {

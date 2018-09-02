@@ -6,7 +6,7 @@ namespace Moteur.Domain.Entities.Utilisateur
     {
         public UtilisateurAdmin(Utilisateur utilisateur)
         {
-            this.Etat = EtatUtlisateur.Admin;
+            this.Etat = EtatUtilisateur.Admin;
         }
     }
 }

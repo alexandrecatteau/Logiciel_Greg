@@ -13,26 +13,34 @@ namespace Moteur.Application.Interface.ServicesExterne
         List<Connexion> ObtenirListeConnexions();
 
         /// <summary>
-        /// Enregistre une connexion.
+        /// Enregistrement d'un nouvel utilisateur.
         /// </summary>
-        /// <param name="connexion">Connexion à enregistrer.</param>
-        void AjouterConnexion(Connexion connexion);
+        Utilisateur AjouterNouvelUtilisateur();
 
         /// <summary>
         /// Enregistrement d'un nouvel utilisateur.
         /// </summary>
-        void AjouterNouvelUtilisateur();
-
-        /// <summary>
-        /// Enregistrement d'un nouvel utilisateur.
-        /// </summary>
-        /// <param name="utilisateur">Utlisateur à ajouter.</param>
-        void AjouterNouvelUtilisateur(Utilisateur utilisateur);
+        /// <param name="utilisateur">Utilisateur à ajouter.</param>
+        void AjouterUtilisateur(Utilisateur utilisateur);
 
         /// <summary>
         /// Obtient la liste de tout les utilisateurs.
         /// </summary>
         /// <returns>Liste de tout le utilisateurs.</returns>
         List<Utilisateur> ObtenirListeUtilisateurs();
+
+        /// <summary>
+        /// Obtien un utilisateur à partir du nom.
+        /// </summary>
+        /// <param name="nomUtilisateur">Nom de l'utilisateur.</param>
+        /// <returns>Objet utilisateur.</returns>
+        Utilisateur ObtenirUtilisateur(string nomUtilisateur);
+
+        /// <summary>
+        /// Ajoute une nouvelle connexion à un utilisateur.
+        /// </summary>
+        /// <param name="utilisateur">Utilisateur ou ajouter la connexion.</param>
+        /// <param name="nomProjet">Nomp du projet</param>
+        void AjouterConnexion(Utilisateur utilisateur, string nomProjet);
     }
 }

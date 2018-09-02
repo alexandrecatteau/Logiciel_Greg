@@ -5,7 +5,7 @@ namespace Moteur.Domain.Enum
     /// <summary>
     /// Etat de l'utilisateur.
     /// </summary>
-    public enum EtatUtlisateur
+    public enum EtatUtilisateur
     {
         /// <summary>
         /// Non défini.

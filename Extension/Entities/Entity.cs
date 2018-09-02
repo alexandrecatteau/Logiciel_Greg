@@ -13,7 +13,7 @@ namespace Extension.Entities
         public DbSet<Erreur> Erreurs { get; set; }
         
         public Entity()
-            :base("GregTest")
+            :base("Greg")
         {
 
         }
